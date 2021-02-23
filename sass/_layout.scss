@@ -1,0 +1,71 @@
+.header {
+    width: 100%;
+    background-color: color(secondary);
+
+    &_logo {
+        @include content-size(50%, 100%);
+        @include flexCenter;
+
+        img {  
+            @include content-size(70%, 80%);
+
+            @include response(lg) {
+                @include content-size(70%, 60%);
+            }
+
+            @include response(md) {
+                @include content-size(90%, 40%);
+            }
+
+            @include response(sm) {
+                @include content-size(80%, 30%);
+            }
+        }
+    }
+}
+
+.main {
+    @include flexCenter(center, flex-start);
+    background-color: color(primary);
+    height: 100%;
+
+    @include response(md) {
+        @include flexColumn;
+    }
+
+    .information-container {
+        @include content-size(70%, 100%);
+        @include flexColumn;
+        
+        @include response(md) {
+            @include content-size(100%, 100%);
+        }
+    }
+    
+    .countries-container {
+        @include content-size(30%, 100%);
+        @include flexColumn;
+
+        h1 {
+            color: color(font-color);
+        }
+
+        @include response(md) {
+            @include content-size(100%, 70%);
+        }
+    }
+}
+
+
+
+.footer {
+    width: 100%;
+    @include flexCenter;
+    background-color: color(secondary);
+
+    .author {
+        cursor: pointer;
+        font-size: 10px;
+        color: color(font-color);
+    }
+}

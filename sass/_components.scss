@@ -1,0 +1,144 @@
+.world-information {
+    width: 100%;
+    margin-bottom: 15px;    
+
+    &_header {
+        @include flexCenter;
+        color: color(font-color);
+
+        @include response(md) {
+            font-size: size(xs);
+            white-space: nowrap;
+        }
+    }
+
+    &_details {
+        @include content-size(100%, 180px);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+
+        @include response(md) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        span, p {
+            @include response(md) {
+                display: none;
+            }
+        }
+
+        &_confrimed {
+            @include world-info(color(color-confrimed));
+        }
+
+        &_recoverd {
+            @include world-info(color(color-recoverd));
+        }
+
+        &_critical {
+            @include world-info(color(color-critical));
+        }
+
+        &_death {
+            @include world-info(color(color-death));
+        }
+    }
+}
+
+.country-information {
+    width: 90%;
+
+    @include response(md) {
+        width: 100%;
+    }
+
+    @include response(sm) {
+        width: 100%;
+    }
+
+    h3 {
+        text-align: center;
+        white-space: nowrap;
+        color: color(font-color);
+
+        @include response(md) {
+            font-size: size(xs);
+        }
+    }
+
+    &_detals {
+        margin: 10px 0;
+        @include flexCenter(space-between, center);
+        padding: 0 10px;
+        
+        &_flag {
+            @include content-size(10%, 80%);
+        }
+
+        &_name {
+            @include content-size(20% ,100%);
+            text-align: center;
+            font-weight: 700;
+
+            @include response(sm) {
+                font-size: size(xxs);
+            }
+        }
+
+        &_confrimed {
+            @include content-size(20% ,100%);
+            @include country-info(color(color-confrimed));
+        }
+
+        &_recoverd {
+            @include content-size(20% ,100%);
+            @include country-info(color(color-recoverd));
+        }
+
+        &_critical {
+            @include content-size(15%, 100%);
+            @include country-info(color(color-critical));
+        }
+
+        &_death {
+            @include content-size(15% ,100%);
+            @include country-info(color(color-death));
+        }
+    }
+
+}
+
+.country {
+    width: 90%;
+    margin: 1px 0;
+    @include flexCenter(space-between, center);
+    padding: 0 10px;
+
+    &_flag {
+        @include content-size(10%, 80%);
+        padding-right: 3px;
+        margin-right: 5px;
+    }
+
+    &_name {
+        @include content-size(50%, 100%);
+        align-items: center;
+    }
+
+    &_new {
+        @include content-size(20%, 100%);
+        color: color(color-confrimed);
+    }
+
+    &_favorite {
+        @include content-size(10%, 60%);
+        background-color: color(secondary);
+    }
+
+    &_favorite-active {
+        background-color: chartreuse;
+    }
+}
