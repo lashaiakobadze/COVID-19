@@ -4,6 +4,7 @@
     align-items: $alignIte;
 }
 
+
 @mixin flexColumn($justCont: flex-start, $alignIte: center) {
     display: flex;
     flex-direction: column;
@@ -11,10 +12,12 @@
     align-items: $alignIte;
 }
 
+
 @mixin content-size($width: 100%, $height: 100%) {
     width: $width;
     height: $height;
 }
+
 
 @mixin world-info($type) {
     @include content-size(22%, 100%);
@@ -22,9 +25,9 @@
     padding-left: 10px;
     color: $type;
     border-top: 1px solid $type;
-    border-bottom: 10px solid $type;
+    box-shadow: 0 10px 20px $type;
 
-    span, h6 {
+    span, h6, p {
         color: gray;
         font-size: size(xs);
     }
@@ -44,16 +47,22 @@
     }
 }
 
+
 @mixin  country-info($type) {
-    color: $type;
+    padding: 0 3px;
+    color: color(font-color);
     border-bottom: 2px solid $type;
-    margin-right: 2px;
+    box-shadow: 0 2px 6px $type;
+    border-radius: 1px;
+    margin-right: 3px;
     padding-bottom: 3px;
+    font-size: size(xs);
 
     @include response(sm) {
         font-size: size(xxs);
     }
 }
+
 
 @mixin  response($breakpoint) {
     @if($breakpoint == xl){
