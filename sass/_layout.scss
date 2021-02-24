@@ -42,7 +42,7 @@
         }
     }
     
-    .countries-container {
+    .countries {
         @include content-size(30%, 100%);
         @include flexColumn;
 

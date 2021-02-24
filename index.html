@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <script defer src="./javsacript/javascript.js"></script>
     <title>COVID-19</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7d85f262cb.js" crossorigin="anonymous"></script>
@@ -22,25 +23,25 @@
                 <div class="world-information_details">
                     <div class="world-information_details_confrimed">
                         <h6>Confrimed</h6>
-                        <b>212,000,123</b>
+                        <b class="cases"> 212,000,123</b>
                         <span>Wed Feb 23/2021</span>
                         <p>Number of active cases of COVID-19.</p>
                     </div>
                     <div class="world-information_details_recoverd">
                         <h6>Recoverd</h6>
-                        <b>212 000 123</b>
+                        <b class="cases">212 000 123</b>
                         <span>Wed Feb 23/2021</span>
                         <p>Number of recoverd cases of COVID-19.</p>
                     </div>
                     <div class="world-information_details_critical">
                         <h6>Critical</h6>
-                        <b>212 000 123</b>
+                        <b class="cases">212 000 123</b>
                         <span>Wed Feb 23/2021</span>
                         <p>Number of critical cases of COVID-19.</p>
                     </div>
                     <div class="world-information_details_death">
                         <h6>Death</h6>
-                        <b>212 000 123</b>
+                        <b class="cases">212 000 123</b>
                         <span>Wed Feb 23/2021</span>
                         <p>Number of death cases of COVID-19.</p>
                     </div>
@@ -66,156 +67,22 @@
                 </div>
             </div>
         </aside>
-        <aside class="countries-container"> 
+        <aside class="countries"> 
             <h1>Countries</h1>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite country_favorite-active"></i>
-            </div> 
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
-            </div>
-            <div class="country">
-                <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
-                <div class="country_name">Georgia</div>
-                <div class="country_new">+90</div>
-                <i class="fas fa-thumbtack country_favorite"></i>
+            <input type="text" class="country_search" placeholder="Search country" onkeyup="myFunction()">
+            <div class="countries-container">
+                <div class="country">
+                    <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
+                    <div class="country_name">Georgia</div>
+                    <div class="country_new">+90</div>
+                    <i class="fas fa-thumbtack country_favorite country_favorite-active"></i>
+                </div> 
+                <div class="country">
+                    <img class="country_flag" src="./asets/1200px-Flag_of_Georgia.svg.png" alt="cointry-flag">
+                    <div class="country_name">Georgia</div>
+                    <div class="country_new">+90</div>
+                    <i class="fas fa-thumbtack country_favorite"></i>
+                </div>
             </div>
         </aside>
     </main>

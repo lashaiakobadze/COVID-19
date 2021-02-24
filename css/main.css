@@ -253,6 +253,11 @@ a {
   .country_favorite-active {
     color: #7c9473; }
 
+.country_search {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 10px; }
+
 .header {
   width: 100%;
   background-color: #7c9473; }
@@ -301,18 +306,18 @@ a {
       .main .information-container {
         width: 100%;
         height: 100%; } }
-  .main .countries-container {
+  .main .countries {
     width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center; }
-    .main .countries-container h1 {
+    .main .countries h1 {
       color: #0a043c;
       padding: 15px 0; }
     @media (max-width: 768px) {
-      .main .countries-container {
+      .main .countries {
         width: 100%;
         height: 70%; } }
 
