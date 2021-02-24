@@ -34,8 +34,8 @@
             @include world-info(color(color-confrimed));
         }
 
-        &_recoverd {
-            @include world-info(color(color-recoverd));
+        &_recovered {
+            @include world-info(color(color-recovered));
         }
 
         &_critical {
@@ -94,9 +94,9 @@
             @include country-info(color(color-confrimed));
         }
 
-        &_recoverd {
+        &_recovered {
             @include content-size(20% ,100%);
-            @include country-info(color(color-recoverd));
+            @include country-info(color(color-recovered));
         }
 
         &_critical {
@@ -116,28 +116,44 @@
     width: 90%;
     margin: 1px 0;
     @include flexCenter(space-between, center);
-    padding: 0 10px;
+    padding-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(color(primary), 15%);
+    }
 
     &_flag {
         @include content-size(10%, 80%);
-        padding-right: 3px;
-        margin-right: 5px;
+        margin-right: 3px;
     }
 
     &_name {
-        @include content-size(50%, 100%);
+        @include content-size(40%, 100%);
         align-items: center;
     }
 
     &_new {
-        @include content-size(20%, 100%);
+        @include content-size(15%, 100%);
         color: color(color-confrimed);
+        font-size: size(xs);
     }
 
+    &_new-recovered {
+        @include content-size(15%, 100%);
+        color: color(color-recovered);
+        font-size: size(xs);
+    }
+ 
     &_favorite {
-        @include content-size(10%, 60%);
+        @include content-size(5%, 60%);
+        margin-right: 2px;
         color: #E6E6FA;
         size: 25px;
+
+        &:hover {
+            color: lighten(color(secondary), 80%);
+        }
     }
 
     &_favorite-active {
@@ -149,4 +165,9 @@
     width: 100%;
     padding: 10px 10px;
     margin: 10px;
+    border-radius: 5px;
+
+    @include response(md) {
+        width: 80%;
+    }
 }
