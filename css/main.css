@@ -165,6 +165,8 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px; }
+    .country-information_detals:hover {
+      background-color: #c6e3d9; }
     .country-information_detals_flag {
       width: 10%;
       height: 80%; }
@@ -296,6 +298,12 @@ a {
   @media (max-width: 768px) {
     .country_search {
       width: 80%; } }
+
+.countries-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
 .header {
   width: 100%;

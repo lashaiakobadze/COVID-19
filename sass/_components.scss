@@ -74,6 +74,10 @@
     &_detals {
         @include flexCenter(space-between, center);
         padding: 10px 10px;
+
+        &:hover {
+            background-color: darken(color(primary), 15%);
+        }
         
         &_flag {
             @include content-size(10%, 80%);
@@ -160,7 +164,7 @@
         color: color(secondary); 
     }
 }
-
+ 
 .country_search {
     width: 100%;
     padding: 10px 10px;
@@ -170,4 +174,8 @@
     @include response(md) {
         width: 80%;
     }
+}
+
+.countries-container {
+    @include flexColumn(center);
 }
