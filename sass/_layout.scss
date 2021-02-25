@@ -27,7 +27,7 @@
 .main {
     @include flexCenter(center, flex-start);
     background-color: color(primary);
-    height: 100%;
+    min-height: 78vh;
 
     @include response(md) {
         @include flexColumn;

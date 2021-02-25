@@ -1,13 +1,3 @@
-// Time 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-"July", "August", "September", "October", "November", "December"];
-
-const dateObj = new Date();
-const month = monthNames[dateObj.getMonth()];
-const day = String(dateObj.getDate()).padStart(2, '0');
-const year = dateObj.getFullYear();
-const output = month  + '\n'+ day  + '.' + year;
-
 // fetch helper function
 async function getData(url) {
   try {
@@ -22,169 +12,200 @@ async function getData(url) {
   };
 };
 
-let countriesData = '';
+let countriesData = [];
+let favCountry = [];
 const worldUrl = 'https://disease.sh/v3/covid-19/all';
 const countryUrl = "https://disease.sh/v3/covid-19/countries";
 
-// world information
+// World information
+// Time 
 const time = document.querySelectorAll('.time');
+const monthNames = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"];
+
+function dateTime() {
+  const dateObj = new Date();
+  const month = monthNames[dateObj.getMonth()];
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  const year = dateObj.getFullYear();
+  const output = month  + '\n'+ day  + '.' + year;
+  return output;
+};
+time.forEach(t => t.innerHTML = dateTime());
+
+// World cases
 const cases = document.querySelectorAll('.cases');
-time.forEach(t => t.innerHTML = output);
 
 async function loadWorldStats() {
+  try {
     const worldData = await getData(worldUrl);
+
     cases[0].innerHTML = worldData.cases.toLocaleString();
     cases[1].innerHTML = worldData.recovered.toLocaleString();
     cases[2].innerHTML = worldData.critical.toLocaleString();
     cases[3].innerHTML = worldData.deaths.toLocaleString();
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 loadWorldStats();
 
 // country information
-async function loadWorldCountry() {
-  countriesData = await getData(countryUrl);
+async function inputData() {
+  try {
+    countriesData = await getData(countryUrl);
+    countriesData.forEach(data => data.bookmarked = false);
+    console.log(favCountry);
+    console.log(countriesData);
 
+    // for(let i = 0; i < countriesData.length; i++) {
+    //   for(let j = 0; i < favCountry.length; j++) {
+    //     if(countriesData[i].updated == favCountry[j])
+    //     countriesData[i].bookmarked = true;
+    //   }
+    // }
+    console.log(countriesData);
+  } catch(err) {
+    console.log(err);
+  }
+};
+
+
+//Localstorage
+function setLocalStorage() {
+  localStorage.setItem('favCountry', JSON.stringify(favCountry));
+};
+
+function getLocalStorage() {
+  const data = JSON.parse(localStorage.getItem('favCountry'));
+
+  if (!data) return;
+
+  favCountry = data;
+};
+
+// Push favorite id
+function inputId(id) {
+  if(favCountry.length === 0) favCountry.push(id);
+
+  const favorit = (element) => element === id;
+  if (!favCountry.some( favorit )) favCountry.push(id);
+};
+
+// Render contry list
+function renderCountry() {
   let text = '';
-  let html = '';
 
   countriesData.forEach( data => {
     text += `
-    <div class="country">
-        <img class="country_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
-        <div class="country_name" data-id="${data.updated}">${data.country}</div>
-        <div class="country_new">+${data.todayCases}</div>
-        <div class="country_new-recovered">+${data.todayRecovered}</div>
-        <i class="fas fa-thumbtack country_favorite"></i>
-    </div>
+      <div class="country">
+          <img class="country_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
+          <div class="country_name" data-id="${data.updated}">${data.country}</div>
+          <div class="country_new">+${data.todayCases}</div>
+          <div class="country_new-recovered">+${data.todayRecovered}</div>
+          <div class="country_favorite${data.bookmarked ? '-active' : ''}"><i class="fas fa-thumbtack"></i></div>
+      </div>
     `;
-    document.querySelector('.countries-container').innerHTML = text;
+    if(data.bookmarked) document.querySelector('.countries-container-favorite').innerHTML = text;
+    if(!data.bookmarked) document.querySelector('.countries-container').innerHTML = text;
+  });
+};
 
-    html += `
-    <div class="country-information_detals">
-        <img class="country-information_detals_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
-        <div class="country-information_detals_name">${data.country}</div>
-        <div class="country-information_detals_confrimed">${data.cases}</div>
-        <div class="country-information_detals_recovered">${data.recovered}</div>
-        <div class="country-information_detals_critical">${data.critical}</div>
-        <div class="country-information_detals_death">${data.deaths}</div>
-    </div>
+// Render contry list favorite
+function renderCountryFavorite(data) {
+  let text = '';
+    text += `
+      <div class="country">
+          <img class="country_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
+          <div class="country_name" data-id="${data.updated}">${data.country}</div>
+          <div class="country_new">+${data.todayCases}</div>
+          <div class="country_new-recovered">+${data.todayRecovered}</div>
+          <div class="country_favorite-active"><i class="fas fa-thumbtack"></i></div>
+      </div>
+    `;
+    document.querySelector('.countries-container-favorite').innerHTML = text;
+};
+
+
+// Country result render
+function renderCountryResult(data) {
+  let html = '';
+
+  html += `
+      <div class="country-information_detals">
+          <img class="country-information_detals_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
+          <div class="country-information_detals_name">${data.country}</div>
+          <div class="country-information_detals_confrimed">${data.cases}</div>
+          <div class="country-information_detals_recovered">${data.recovered}</div>
+          <div class="country-information_detals_critical">${data.critical}</div>
+          <div class="country-information_detals_death">${data.deaths}</div>
+      </div>
     `;
     document.querySelector('.country-information-container').innerHTML = html;
-  });
+};
 
-  console.log(countriesData);
+
+// Render current country data
+function renderCurentCountry() {
+  const curCountry = document.querySelectorAll('.country');
+
+  curCountry.forEach(b => b.addEventListener('click', function(e) {
+    let curCountryId = e.target.closest('.country').children[1].dataset.id;
+    for(let i = 0; i < countriesData.length; i++)
+      if( +curCountryId === countriesData[i].updated) renderCountryResult(countriesData[i]);
+  }));
+};
+
+async function loadWorldCountry() {
+  try {
+    getLocalStorage();
+    await inputData();  
+    renderCountry();
+    renderCurentCountry();
+
+    const favBtn = document.querySelectorAll('.country_favorite');
+    favBtn.forEach(b => b.addEventListener('click', function(e) {
+      let curId = e.target.closest('.country').children[1].dataset.id;
+      // e.target.closest('.country').style.display = 'none';
+      for(let i = 0; i < countriesData.length; i++)
+        if( +curId === countriesData[i].updated){
+          countriesData[i].bookmarked = true;
+          renderCountryFavorite(countriesData[i]);
+        }
+
+      inputId(curId);
+      setLocalStorage();
+      renderCurentCountry();
+
+      // if(!e.target.closest('.country').classList.contains('country_favorite-active'))
+      //   e.target.closest('.country').children[4].classList.add('country_favorite-active');
+      // else  e.target.closest('.country').children[4].classList.remove('country_favorite-active');
+    }));    
+  } catch(err) {
+    console.error(err);
+  }
 }
 
 loadWorldCountry();
 
-console.log(countriesData);
-
 // search function
 function myFunction() {
-  let input, filter, tr, td, i, txtValue;
+  let input, filter, country, countryName, txtValue;
   input = document.querySelector(".country_search");
   filter = input.value.toUpperCase();
-  tr = document.querySelectorAll(".country");
+  country = document.querySelectorAll(".country"); 
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("div")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
+  for (let i = 0; i < country.length; i++) {
+    countryName = country[i].getElementsByTagName("div")[0];
+    if (countryName) {
+      txtValue = countryName.textContent || countryName.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
+        country[i].style.display = "";
       } else {
-        tr[i].style.display = "none";
+        country[i].style.display = "none";
       }
     }
   }
 };
 
-
-/*
-// Render countr data from country data array
-
-function country(flag, countryName, todayCases, todayRecovered, cases, recovered, critical, deaths) {
-  this.flag = flag;
-  this.countryName = countryName;
-  this.todayCases = todayCases;
-  this.todayRecovered = todayRecovered;
-  this.cases = cases;
-  this.recovered = recovered;
-  this.critical = critical;
-  this.deaths = deaths;
-}
-
-async function inputData() {
-  getData(`https://disease.sh/v3/covid-19/countries`).then(data => {
-      for(let i = 0; i < data.length; i++) {
-        const newCountry = new country(data[i].countryInfo.flag, data[i].country, data[i].todayCases, data[i].todayRecovered, data[i].cases, data[i].recovered, data[i].critical, data[i].deaths)
-        countriesData.push(newCountry);
-        // countriesData.push([data[i].countryInfo.flag, data[i].country, data[i].todayCases, data[i].todayRecovered, data[i].cases, data[i].recovered, data[i].critical, data[i].deaths]);
-      };
-  });
-
-
-  // let text = '';
-
-  // for(let i = 0; i < countriesData.length; i++) {
-  //     text += `
-  //     <div class="country">
-  //         <img class="country_flag" src="${countriesData[i][0]}" alt="cointry-flag">
-  //         <div class="country_name">${countriesData[i][1]}</div>
-  //         <div class="country_new">+${countriesData[i][2]}</div>
-  //         <div class="country_new-recovered">+${countriesData[i][3]}</div>
-  //         <i class="fas fa-thumbtack country_favorite"></i>
-  //     </div>
-  //     `;
-  //   };
-  //   document.querySelector('.countries-container').innerHTML = text;
-};
-
-inputData();
-
-function renderCountry(country) {
-  let html = '';
-      text += `
-      <div class="country">
-          <img class="country_flag" src="${country.flag}" alt="cointry-flag">
-          <div class="country_name">${country.countryName}</div>
-          <div class="country_new">+${country.todayCases}</div>
-          <div class="country_new-recovered">+${country.todayRecovered}</div>
-          <i class="fas fa-thumbtack country_favorite"></i>
-      </div>
-      `;
-  document.querySelector('.countries-container').insertAdjacentHTML('beforeend', html);
-}
-
-async function vaxtang() {
-  await countriesData.map(data => renderCountry(data));
-  if(countriesData.length <= 0) console.log('jer ar Sevsebula');
-};
-
-vaxtang();
-
-console.log(countriesData);
-
-// // country data
-// function loadWorldCountry() {
-    // let text = '';
-
-    // for(let x = 0; x < countriesData.length; x++) {
-    //     text += `
-    //     <div class="country">
-    //         <img class="country_flag" src="${countriesData[x].flag}" alt="cointry-flag">
-    //         <div class="country_name">${countriesData[x].country}</div>
-    //         <div class="country_new">+${countriesData[x].todayCases}</div>
-    //         <div class="country_new-recovered">+${countriesData[x].todayRecovered}</div>
-    //         <i class="fas fa-thumbtack country_favorite"></i>
-    //     </div>
-    //     `;
-    //     document.querySelector('.countries-container').innerHTML = text;
-    // };
-
-//     console.log('darenderda');
-// }
-
-// setTimeout(loadWorldCountry, 100000);
-*/
