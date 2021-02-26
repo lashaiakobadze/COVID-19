@@ -123,6 +123,11 @@
             @include content-size(20% ,100%);
             text-align: center;
             font-weight: 700;
+            font-size: 12px;
+
+            @include response(md) {
+                font-size: size(xs);
+            }
 
             @include response(sm) {
                 font-size: size(xxs);
@@ -152,64 +157,71 @@
 
 }
 
-.country {
-    width: 90%;
-    margin: 1px 0;
-    @include flexCenter(space-between, center);
-    padding-left: 10px;
-    cursor: pointer;
+.countries-container,.countries-container-favorite {
+    @include flexColumn(center);
+    width:100%;
 
-    &:hover {
-        background-color: darken(color(primary), 15%);
-    }
-
-    &_flag {
-        @include content-size(10%, 80%);
-        margin-right: 3px;
-    }
-
-    &_name {
-        @include content-size(40%, 100%);
-        align-items: center;
-    }
-
-    &_new {
-        @include content-size(15%, 100%);
-        color: color(color-confrimed);
-        font-size: size(xs);
-    }
-
-    &_new-recovered {
-        @include content-size(15%, 100%);
-        color: color(color-recovered);
-        font-size: size(xs);
-    }
- 
-    &_favorite {
-        @include content-size(5%, 60%);
-        margin-right: 2px;
-        color: #E6E6FA;
-        size: 25px;
-
+    .country {
+        width: 90%;
+        margin: 1px 0;
+        @include flexCenter(space-between, center);
+        padding-left: 10px;
+        cursor: pointer;
+    
         &:hover {
-            color: lighten(color(secondary), 80%);
+            background-color: darken(color(primary), 15%);
         }
-    }
-
-    &_favorite-active {
-        @include content-size(5%, 60%);
-        margin-right: 2px;
-        color: color(secondary); 
-        size: 25px;
-
-        &:hover {
-            color: lighten(color(secondary), 80%);
+    
+        &_flag {
+            @include content-size(10%, 80%);
+            margin-right: 3px;
+        }
+    
+        &_name {
+            @include content-size(40%, 100%);
+            font-size: 12px;
+            align-items: center;
+        }
+    
+        &_new {
+            @include content-size(15%, 100%);
+            color: color(color-confrimed);
+            font-size: size(xs);
+        }
+    
+        &_new-recovered {
+            @include content-size(15%, 100%);
+            color: color(color-recovered);
+            font-size: size(xs);
+        }
+     
+        &_favorite {
+            @include content-size(5%, 60%);
+            margin-right: 2px;
+            color: #E6E6FA;
+            size: 25px;
+    
+            &:hover {
+                color: lighten(color(secondary), 80%);
+            }
+        }
+    
+        &_favorite-active {
+            @include content-size(5%, 60%);
+            margin-right: 2px;
+            color: color(secondary); 
+            size: 25px;
+    
+            &:hover {
+                color: lighten(color(secondary), 80%);
+            }
         }
     }
 }
+
  
 .country_search {
-    width: 100%;
+    width: 90%;
     padding: 10px 10px;
     margin: 10px;
     border-radius: 5px;
@@ -219,6 +231,13 @@
     }
 }
 
-.countries-container,.countries-container-favorite {
-    @include flexColumn(center);
+
+.container-background {
+    padding-top: 40px;
+    color: gray;  
+    font-weight: 900;
+    font-size: size(xxl);
+    text-align: center;
+    opacity: 0.15;
+    letter-spacing: 30px;
 }

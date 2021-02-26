@@ -37,7 +37,7 @@
         height: 49%;
 
         box-shadow: none;
-        border-bottom: 10px solid $type;
+        border-bottom: 10px solid $type;  
     }
 
     @include response(sm) {

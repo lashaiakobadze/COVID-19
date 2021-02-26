@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./asets/coronavirus-5107715_1280.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/main.css">
-    <script defer src="./javsacript/javascript.js"></script>
+    <script type="module" defer src="./javsacript/controller.js"></script>
     <title>COVID-19</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7d85f262cb.js" crossorigin="anonymous"></script>
@@ -57,12 +57,14 @@
                     <span class="country-information_headers_criticals">Critical</span>
                     <span class="country-information_headers_deats">Total deaths</span>
                 </div>
-                <div class="country-information-container"></div>
+                <div class="country-information-container">
+                    <div class="container-background">EMPTY</div>
+                </div>
             </div>
         </aside>
         <aside class="countries"> 
             <h1>Countries</h1>
-            <input type="text" class="country_search" placeholder="Search country" onkeyup="myFunction()">
+            <input type="text" class="country_search" placeholder="Search country">
             <div class="countries-container-favorite"></div> 
             <div class="countries-container"></div> 
         </aside>
