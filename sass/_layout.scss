@@ -1,67 +1,65 @@
 .header {
-    width: 100%;
     background-color: color(secondary);
 
     &_logo {
-        @include content-size(50%, 100%);
-        @include flexCenter;
+        width: 50%;
+        display: flex;
+        justify-content: center;
 
         img {  
-            @include content-size(70%, 80%);
-
-            @include response(lg) {
-                @include content-size(70%, 60%);
-            }
+            width: 70%;
 
             @include response(md) {
-                @include content-size(90%, 40%);
-            }
-
-            @include response(sm) {
-                @include content-size(80%, 30%);
+                width: 90%;
             }
         }
     }
 }
 
+
 .main {
-    @include flexCenter(center, flex-start);
+    display: flex;
+    justify-content: center;
     background-color: color(primary);
-    min-height: 78vh;
+    min-height: 80vh;
 
     @include response(md) {
-        @include flexColumn;
+        flex-direction: column;
     }
 
     .information-container {
-        @include content-size(70%, 100%);
-        @include flexColumn;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
         @include response(md) {
-            @include content-size(100%, 100%);
+            width: 100%;
         }
     }
     
     .countries {
-        @include content-size(30%, 100%);
-        @include flexColumn;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include response(md) {
+            width: 100%;
+        }
 
         h1 {
             color: color(font-color);
             padding-top: 20px;
             padding-bottom: 10px;
         }
-
-        @include response(md) {
-            @include content-size(100%, 70%);
-        }
     }
 }
 
 
 .footer {
-    width: 100%;
-    @include flexCenter;
+    display: flex;
+    justify-content: center;
     background-color: color(secondary);
 
     .author {

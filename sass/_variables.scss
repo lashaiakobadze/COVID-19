@@ -12,6 +12,7 @@ $colors: (
     @return map-get($colors, $color-name);
 };
 
+
 $font-sizes: (
     xxl: 50px, 
     xl: 30px,

@@ -30,8 +30,7 @@ export function renderCountryFavorite(data) {
       `;
       document.querySelector('.countries-container-favorite').insertAdjacentHTML("beforeend", html);
   };
-  
-  
+    
   // Country result render
   export function renderCountryResult(data) {
     let html = '';
