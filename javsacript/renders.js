@@ -15,24 +15,9 @@ export function renderCountry(data) {
   if(data.favorite)  document.querySelector('.countries-container-favorite').insertAdjacentHTML("beforeend", html);
   else document.querySelector('.countries-container').insertAdjacentHTML("beforeend", html);
 };
-
-// Render contry list favorite
-export function renderCountryFavorite(data) {
-  let html = '';
-
-  html += `
-      <div class="country">
-          <img class="country_flag" src="${data.countryInfo.flag}" alt="${data.country}-flag">
-          <div class="country_name" data-id="${data.updated}">${data.country}</div>
-          <div class="country_new">+${data.todayCases}</div>
-          <div class="country_new-recovered">+${data.todayRecovered}</div>
-          <div class="country_favorite-active"><i class="fas fa-thumbtack"></i></div>
-      </div>
-    `;
-  document.querySelector('.countries-container-favorite').insertAdjacentHTML("beforeend", html);
-};
     
-  // Country result render
+
+// Country result render
 export function renderCountryResult(data) {
   let html = '';
 
