@@ -80,24 +80,28 @@ function renderCurentCountry() {
   }));
 };
 
+// favorite & refavorite
 let favoriteBtn = document.querySelectorAll('.country_favorite');
 let reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
 
 function favorited() {
   function favoritedOnBtn(e) {
     const curId = e.target.closest('.country').children[1].dataset.id;
-    // e.target.closest('.country').style.display = 'none';
+    e.target.closest('.country').style.display = 'none';
+    document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
     for(let i = 0; i < countriesData.length; i++){
-      if( +curId === countriesData[i].updated)  countriesData[i].favorite = true;
-      // renderCountryFavorite(countriesData[i]);
+      if( +curId === countriesData[i].updated) {
+        countriesData[i].favorite = true;
+        // renderCountryFavorite(countriesData[i]); // shesacvleli renderi
+      }        
     };
   
     inputId(curId);    
     setLocalStorage();
     renderCurentCountry();
-  
     document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
     countriesData.forEach( data => renderCountry(data));
+    loadWorldCountry();
   };
 
   favoriteBtn = document.querySelectorAll('.country_favorite');
@@ -105,6 +109,7 @@ function favorited() {
 
   favoriteBtn.forEach(b => b.addEventListener('click', favoritedOnBtn));
 };
+favorited();
 
 function reFavorited() {
   function reFavoritedOnBtn(e) {
@@ -120,6 +125,7 @@ function reFavorited() {
 
     document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
     countriesData.forEach( data => renderCountry(data));
+    loadWorldCountry();
   };
 
   favoriteBtn = document.querySelectorAll('.country_favorite');
@@ -127,6 +133,7 @@ function reFavorited() {
 
   reFavoriteBtn.forEach(b => b.addEventListener('click', reFavoritedOnBtn));
 };
+reFavorited();
 
 
 // Render all country data as list
@@ -134,6 +141,7 @@ async function loadWorldCountry() {
   try {
     getLocalStorage();
     await getAllCountries();  
+    document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
     countriesData.forEach( data => renderCountry(data));
     renderCurentCountry();
 
