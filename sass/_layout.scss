@@ -3,12 +3,11 @@
 
     &_logo {
         width: 50%;
-        display: flex;
-        justify-content: center;
+        @include flexCenter;
 
         img {  
-            width: 70%;
-
+            @include content-size(70%, 100%);
+            
             @include response(md) {
                 width: 90%;
             }
@@ -18,8 +17,7 @@
 
 
 .main {
-    display: flex;
-    justify-content: center;
+    @include flexCenter;
     background-color: color(primary);
     min-height: 80vh;
 
@@ -29,9 +27,7 @@
 
     .information-container {
         width: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flexColumn;
         
         @include response(md) {
             width: 100%;
@@ -40,9 +36,7 @@
     
     .countries {
         width: 30%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flexColumn;
 
         @include response(md) {
             width: 100%;
@@ -58,8 +52,7 @@
 
 
 .footer {
-    display: flex;
-    justify-content: center;
+    @include flexCenter;
     background-color: color(secondary);
 
     .author {

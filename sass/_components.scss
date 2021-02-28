@@ -3,8 +3,7 @@
     margin-bottom: 15px;    
 
     &_header {
-        display: flex;
-        justify-content: center;
+        @include flexCenter;
         color: color(font-color);
         padding: 20px 0;
 
@@ -15,8 +14,7 @@
  
     &_details {
         height: 180px;
-        display: flex;
-        justify-content: space-around;
+        @include flexCenter(space-around);
 
         @include response(md) {
             flex-wrap: wrap;
@@ -70,8 +68,7 @@
 
         &_name {
             width: 40%;
-            display: flex;
-            justify-content: center;
+            @include flexCenter;
         }
 
         &_cases {
@@ -91,7 +88,7 @@
         }
 
         span {
-            @media (max-width: 920px) {
+            @media (max-width: 930px) {
                 font-size: size(xs);
             }
 
@@ -155,17 +152,17 @@
 
 .countries-container, .countries-container-favorite {
     width: 100%;
-    @include flexColumn(center);
     padding: 0 20px;
 
     @include response(md) {
-        padding: 0 40px;
+        padding: 0 30px;
     }
 
     .country {
         width: 100%;
+        @include flexCenter;
+        align-items: center;
         margin: 1px 0;
-        @include flexCenter(space-between, center);
         cursor: pointer;
     
         &:hover {

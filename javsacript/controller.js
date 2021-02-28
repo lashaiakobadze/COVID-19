@@ -65,11 +65,8 @@ function inputId(id) {
 
 // Outpoot id 
 function outPutId(id) {
-  for(let i = 0; i < favoriteCountryId.length; i++) {
-    if(favoriteCountryId[i] == id) {
-        favoriteCountryId.splice(i, 1);
-    }
-  };
+  for(let i = 0; i < favoriteCountryId.length; i++)
+    if(favoriteCountryId[i] == id) favoriteCountryId.splice(i, 1);
 };
 
 // Render current country data
@@ -77,11 +74,60 @@ function renderCurentCountry() {
   const curCountry = document.querySelectorAll('.country');
 
   curCountry.forEach(b => b.addEventListener('click', function(e) {
-    let curCountryId = e.target.closest('.country').children[1].dataset.id;
+    const curCountryId = e.target.closest('.country').children[1].dataset.id;    
     for(let i = 0; i < countriesData.length; i++)
       if( +curCountryId === countriesData[i].updated) renderCountryResult(countriesData[i]);
   }));
 };
+
+let favoriteBtn = document.querySelectorAll('.country_favorite');
+let reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
+
+function favorited() {
+  function favoritedOnBtn(e) {
+    const curId = e.target.closest('.country').children[1].dataset.id;
+    // e.target.closest('.country').style.display = 'none';
+    for(let i = 0; i < countriesData.length; i++){
+      if( +curId === countriesData[i].updated)  countriesData[i].favorite = true;
+      // renderCountryFavorite(countriesData[i]);
+    };
+  
+    inputId(curId);    
+    setLocalStorage();
+    renderCurentCountry();
+  
+    document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
+    countriesData.forEach( data => renderCountry(data));
+  };
+
+  favoriteBtn = document.querySelectorAll('.country_favorite');
+  reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
+
+  favoriteBtn.forEach(b => b.addEventListener('click', favoritedOnBtn));
+};
+
+function reFavorited() {
+  function reFavoritedOnBtn(e) {
+    const curId = e.target.closest('.country').children[1].dataset.id;
+    // e.target.closest('.country').style.display = 'none';
+    for(let i = 0; i < countriesData.length; i++){
+      if( +curId === countriesData[i].updated) countriesData[i].favorite = false; 
+    };
+
+    outPutId(curId);
+    setLocalStorage();
+    renderCurentCountry();
+
+    document.querySelector('.countries-container-favorite').innerHTML = document.querySelector('.countries-container').innerHTML = '';
+    countriesData.forEach( data => renderCountry(data));
+  };
+
+  favoriteBtn = document.querySelectorAll('.country_favorite');
+  reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
+
+  reFavoriteBtn.forEach(b => b.addEventListener('click', reFavoritedOnBtn));
+};
+
 
 // Render all country data as list
 async function loadWorldCountry() {
@@ -91,40 +137,11 @@ async function loadWorldCountry() {
     countriesData.forEach( data => renderCountry(data));
     renderCurentCountry();
 
-    const favoriteBtn = document.querySelectorAll('.country_favorite');
-    const reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
+    favoriteBtn = document.querySelectorAll('.country_favorite');
+    reFavoriteBtn = document.querySelectorAll('.country_favorite-active');
 
-    favoriteBtn.forEach(b => b.addEventListener('click', function(e) {
-      let curId = e.target.closest('.country').children[1].dataset.id;
-
-      e.target.closest('.country').style.display = 'none';
-
-      for(let i = 0; i < countriesData.length; i++)
-        if( +curId === countriesData[i].updated){
-          countriesData[i].favorite = true;
-          renderCountryFavorite(countriesData[i]);
-        }
-
-      inputId(curId);    
-      setLocalStorage();
-      renderCurentCountry();
-    }));    
-
-    reFavoriteBtn.forEach(b => b.addEventListener('click', function(e) {
-      document.querySelectorAll('.country_favorite-active');
-      let curId = e.target.closest('.country').children[1].dataset.id;
-      e.target.closest('.country').style.display = 'none';
-
-      for(let i = 0; i < countriesData.length; i++)
-        if( +curId === countriesData[i].updated){
-          countriesData[i].favorite = false;
-        }
-
-      outPutId(curId);
-      setLocalStorage();
-      renderCurentCountry();
-    }));    
-
+    favorited();
+    reFavorited();
   } catch(err) {
     console.error(err);
   }
