@@ -25,6 +25,7 @@ async function loadWorldStats() {
 };
 loadWorldStats();
 
+
 // Get countries from API and filter
 async function getAllCountries() {
   try {
@@ -42,6 +43,7 @@ async function getAllCountries() {
   }
 };
 
+
 //Local storage
 function setLocalStorage() {
   localStorage.setItem('favoriteCountryId', JSON.stringify(favoriteCountryId));
@@ -55,6 +57,7 @@ function getLocalStorage() {
   favoriteCountryId = data;
 };
 
+
 // Push favorite id
 function inputId(id) {
   if(favoriteCountryId.length === 0) favoriteCountryId.push(id);
@@ -63,11 +66,13 @@ function inputId(id) {
   if (!favoriteCountryId.some( favorit )) favoriteCountryId.push(id);
 };
 
+
 // Outpoot id 
 function outPutId(id) {
   for(let i = 0; i < favoriteCountryId.length; i++)
     if(favoriteCountryId[i] === id) favoriteCountryId.splice(i, 1);
 };
+
 
 // Render current country data
 function renderCurentCountry() {
@@ -79,6 +84,7 @@ function renderCurentCountry() {
       if( +curCountryId === countriesData[i].updated) renderCountryResult(countriesData[i]);
   }));
 };
+
 
 // favorite & refavorite main
 let favoriteBtn = document.querySelectorAll('.country_favorite');
@@ -98,7 +104,7 @@ function faviriteMain(favoriteVal, curId) {
   clearHtml();
   countriesData.forEach( data => renderCountry(data));
   loadWorldCountry();
-}
+};
 
 
 function favorited() {
@@ -119,6 +125,7 @@ function reFavorited() {
   reFavoriteBtn.forEach(b => b.addEventListener('click', reFavoritedOnBtn));
 };
 
+
 // Render all country data as list
 async function loadWorldCountry() {
   try {
@@ -136,7 +143,7 @@ async function loadWorldCountry() {
   } catch(err) {
     console.error(err);
   }
-}
+};
 loadWorldCountry();
 
 // Search countries from list
